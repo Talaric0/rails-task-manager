@@ -1,12 +1,12 @@
 class TasksController < ApplicationController
   def index
-    @tasks= Task.all
+    @tasks = Task.all
   end
-  
+
   def show
     @task = Task.find(params[:id])
   end
-  
+
   def new
     @task = Task.new
   end
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
 
     redirect_to task_path(@task)
   end
-  
+
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
@@ -35,11 +35,9 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
-
   private
+
   def task_params
     params.require(:task).permit(:title, :details, :completed)
   end
-  
-  
 end
